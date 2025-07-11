@@ -13,10 +13,9 @@ col1, col2 = st.columns([1, 5])  # Adjust ratio to size preference
 with col1:
     st.image(uah_logo_url, width=90)
 with col2:
-    st.title("Teaching Assistant")
+    st.title("Teaching Assistant:")
 st.write(
     "Please feel free to ask any questions about the course syllabus or homework assignments. "
-    
 )
 
 load_dotenv()
