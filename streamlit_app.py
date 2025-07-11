@@ -15,8 +15,8 @@ with col1:
 with col2:
     st.title("Teaching Assistant")
 st.write(
-    "Please feel free to ask any questions about the course syllabus or homework assignments."
-    "Please ask course-related or factual questions - such as key concepts for each chapter. "
+    "Please feel free to ask any questions about the course syllabus or homework assignments. "
+    
 )
 
 load_dotenv()
@@ -48,7 +48,7 @@ else:
 
     # Ask the user for a question via `st.text_area`.
     question = st.text_input(
-        "Now ask a question about cybersecurity!",
+        "How may I help you today?",
         placeholder="Type your question here...",
         # disabled=not uploaded_file,
     )
