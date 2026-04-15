@@ -30,20 +30,21 @@ else:
 
     # Create an OpenAI client.
     client = OpenAI(api_key=openai_api_key)
-
-    # Let the user upload a file via `st.file_uploader`.
-    # uploaded_file = st.file_uploader(
-    #     "Upload a PDF document", type="pdf"
-    # )
     
-    # Path to your local PDF file
-    pdf_path = "./syllabus.pdf"
+    documents_folder = "./documents"
+    document = ""
 
-    # Read the PDF
-    with fitz.open(pdf_path) as doc:
-        document = ""
-        for page in doc:
-            document += page.get_text()
+    if os.path.exists(documents_folder):
+        pdf_files = [f for f in os.listdir(documents_folder) if f.lower().endswith(".pdf")]
+
+        for pdf_file in sorted(pdf_files):
+            full_pdf_path = os.path.join(documents_folder, pdf_file)
+
+            # Read the PDF
+            with fitz.open(full_pdf_path) as doc:
+                document += f"\n\n--- Document: {pdf_file} ---\n\n"
+                for page in doc:
+                    document += page.get_text()
 
     # Ask the user for a question via `st.text_area`.
     question = st.text_input(
